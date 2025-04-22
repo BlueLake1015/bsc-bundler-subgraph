@@ -28,3 +28,6 @@ $ yarn start
 ### DevTools
 
 You can also run The Graph Client DevTools by running: `yarn graphiql`.
+
+### Reminder
+After you move or copy, you must run "yarn build-client" before running "yarn start"
