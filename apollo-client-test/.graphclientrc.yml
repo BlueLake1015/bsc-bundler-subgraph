@@ -1,0 +1,10 @@
+sources:
+  - name: fourmeme-bundler
+    handler:
+      graphql:
+        endpoint: https://api.studio.thegraph.com/query/109782/fourmeme-bundler/version/latest
+        operationHeaders:
+          Authorization: Bearer 12839da7f657ca0711b6e4acbe2e977d
+
+documents:
+  - ./src/token-query.graphql

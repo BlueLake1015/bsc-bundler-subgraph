@@ -1,0 +1,18 @@
+query TokenQuery($token: Bytes!) {
+  tokenSales(where : {token : $token}) {
+    token
+    account
+    price
+    amount
+    blockTimestamp
+  }
+  tokenPurchases(where : {token : $token}) {
+    token
+    account
+    price
+    amount
+    blockTimestamp
+  }
+}
+
+

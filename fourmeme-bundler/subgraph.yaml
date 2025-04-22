@@ -1,0 +1,62 @@
+specVersion: 1.3.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: fourmeme
+    network: bsc
+    source:
+      abi: fourmeme
+      address: "0x5c952063c7fc8610FFDB798152D69F0B9550762b"
+      startBlock: 48569125
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - BeaconUpgraded
+        - Initialized
+        - LiquidityAdded
+        - OwnershipTransferred
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - TokenCreate
+        - TokenPurchase
+        - TokenSale
+        - TradeStop
+        - Upgraded
+      abis:
+        - name: fourmeme
+          file: ./abis/fourmeme.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: LiquidityAdded(address,uint256,address,uint256)
+          handler: handleLiquidityAdded
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: TokenCreate(address,address,uint256,string,string,uint256,uint256,uint256)
+          handler: handleTokenCreate
+        - event: TokenPurchase(address,address,uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleTokenPurchase
+        - event: TokenSale(address,address,uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleTokenSale
+        - event: TradeStop(address)
+          handler: handleTradeStop
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+      file: ./src/fourmeme.ts
